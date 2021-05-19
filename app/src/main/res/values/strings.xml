@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SocialAndroid</string>
+    <string name="main">Главная</string>
+    <string name="chats">Сообщения</string>
+    <string name="profile">Профиль</string>
+    <string name="a"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="aa">Hello blank fragment</string>
+    <string name="username">Имя пользователя</string>
+    <string name="email">Email (необязательно)</string>
+    <string name="password">Пароль</string>
+    <string name="password_repeat">Повторить пароль</string>
+    <string name="account_do">У меня уже есть аккаунт</string>
+    <string name="account_notdo">У меня нет аккаунта</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="status">Статус</string>
+    <string name="about">Подробная информация</string>
+    <string name="men">Мужчина</string>
+    <string name="women">Женщина</string>
+    <string name="birth_day">День рождения</string>
+    <string name="sex">Пол</string>
+    <string name='save'>Сохранить изменения</string>
+</resources>

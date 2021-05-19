@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="model"
+            type="com.example.socialandroid.ui.custom.CustomViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.custom.CustomFragment">
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/person_image_edit"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="40dp"
+
+            android:src="@drawable/ic_baseline_photo_camera_24"
+            app:civ_circle_background_color="@color/purple_200"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:id="@+id/radio"
+            android:layout_toEndOf="@id/person_image_edit">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/men"
+                android:textSize="18sp"
+                android:checked="@={model.isMen}"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/women"
+                android:textSize="18sp"
+                android:checked="@={!model.isMen}"/>
+        </RadioGroup>
+        <EditText
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/person_image_edit"
+            android:hint="@string/status"
+            android:text="@={model.status}"
+            android:layout_margin="20dp"/>
+        <EditText
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/about"
+            android:minHeight="100dp"
+            android:layout_below="@id/status"
+            android:gravity="bottom"
+            android:text="@={model.about}"
+            android:layout_margin="20dp"/>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about"
+            android:layout_margin="20dp"
+            android:text="@string/save"/>
+
+    </RelativeLayout>
+</layout>
