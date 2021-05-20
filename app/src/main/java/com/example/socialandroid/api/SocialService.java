@@ -27,7 +27,7 @@ public class SocialService {
     private Retrofit createRetrofit(){
         Log.d("tag", "createRetrofit");
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.31.150:8000/api/v1/")
+                .baseUrl("http://192.168.31.150:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .client(createHttpClient())

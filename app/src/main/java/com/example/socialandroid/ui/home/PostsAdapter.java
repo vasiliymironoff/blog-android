@@ -54,7 +54,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.Holder> {
         public Holder(@NonNull @NotNull View itemView) {
             super(itemView);
             binding = DataBindingUtil.bind(itemView);
-
         }
 
         void bind(Post post) {

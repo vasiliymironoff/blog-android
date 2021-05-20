@@ -1,11 +1,11 @@
 package com.example.socialandroid.api.model;
 
-import android.graphics.Bitmap;
+import android.net.Uri;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Author {
+public class Profile {
 
     @SerializedName("id")
     @Expose
@@ -17,7 +17,7 @@ public class Author {
 
     @SerializedName("image")
     @Expose
-    private Bitmap image;
+    private String image;
 
     public Integer getId() {
         return id;
@@ -35,11 +35,11 @@ public class Author {
         this.username = username;
     }
 
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Bitmap image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

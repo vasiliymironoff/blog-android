@@ -50,8 +50,13 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
+
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(HomeViewModel.class);
-        mViewModel.updatePosts();
+        if (App.posts == null) {
+            mViewModel.updatePosts();
+        } else {
+            mViewModel.posts.setValue(App.posts);
+        }
         mViewModel.getPosts().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {

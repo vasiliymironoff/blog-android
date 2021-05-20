@@ -12,7 +12,7 @@ public class Post {
 
     @SerializedName("author")
     @Expose
-    private Author author;
+    private Profile author;
 
     @SerializedName("title")
     @Expose
@@ -34,11 +34,11 @@ public class Post {
         this.id = id;
     }
 
-    public Author getAuthor() {
+    public Profile getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(Profile author) {
         this.author = author;
     }
 

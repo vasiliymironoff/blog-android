@@ -14,11 +14,20 @@
         android:id="@+id/chat_fragment"
         android:name="com.example.socialandroid.ui.chats.ChatFragment"
         android:label="chat_fragment"
-        tools:layout="@layout/chat_fragment" />
+        tools:layout="@layout/chat_fragment" >
+        <action
+            android:id="@+id/action_chat_fragment_to_messageActivity"
+            app:destination="@id/messageActivity" />
+    </fragment>
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.example.socialandroid.ui.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" />
+    <activity
+        android:id="@+id/messageActivity"
+        android:name="com.example.socialandroid.ui.message.MessageActivity"
+        android:label="activity_message"
+        tools:layout="@layout/activity_message" />
 
 </navigation>
