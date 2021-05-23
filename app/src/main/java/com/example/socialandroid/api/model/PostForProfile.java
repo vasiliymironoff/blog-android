@@ -4,39 +4,20 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Post {
+public class PostForProfile {
 
     @SerializedName("id")
     @Expose
     private Integer id;
-
-    @SerializedName("author")
-    @Expose
-    private Profile author;
-
     @SerializedName("title")
     @Expose
     private String title;
-
     @SerializedName("text")
     @Expose
     private String text;
-
     @SerializedName("time")
     @Expose
     private String time;
-
-    public Post(){
-
-    }
-
-    public Post(Integer id, Profile author, String title, String text, String time) {
-        this.id = id;
-        this.author = author;
-        this.title = title;
-        this.text = text;
-        this.time = time;
-    }
 
     public Integer getId() {
         return id;
@@ -44,14 +25,6 @@ public class Post {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Profile getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Profile author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -77,5 +50,6 @@ public class Post {
     public void setTime(String time) {
         this.time = time;
     }
+
 
 }

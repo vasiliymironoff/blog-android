@@ -1,5 +1,7 @@
 package com.example.socialandroid.ui.chats;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -40,12 +42,16 @@ public class ChatFragment extends Fragment implements Chatable{
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.chat_fragment, container, false);
         recyclerView = view.findViewById(R.id.chat_recycler);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Сообщения");
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
         mViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         adapter = new ProfileAdapter(this);
         recyclerView.setAdapter(adapter);

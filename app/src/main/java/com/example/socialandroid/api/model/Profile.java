@@ -19,6 +19,12 @@ public class Profile {
     @Expose
     private String image;
 
+    public Profile(Integer id, String username, String image) {
+        this.id = id;
+        this.username = username;
+        this.image = image;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -22,46 +22,43 @@
             android:layout_margin="50dp">
             <EditText
                 android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+
                 android:text="@={model.username}"
                 android:hint="@string/username"
-                android:layout_marginBottom="@dimen/margin_login"/>
+                style="@style/EditTextLogin"/>
             <EditText
                 android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@={model.email}"
                 android:hint="@string/email"
-                android:layout_marginBottom="@dimen/margin_login"
-                android:visibility="@{model.isRegister ? View.GONE : View.VISIBLE}"/>
+                android:visibility="@{model.isRegister ? View.VISIBLE : View.GONE }"
+                style="@style/EditTextLogin"/>
             <EditText
                 android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@={model.password}"
                 android:hint="@string/password"
-                android:layout_marginBottom="@dimen/margin_login"/>
+                style="@style/EditTextLogin"/>
             <EditText
                 android:id="@+id/password_repeat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@={model.password_repeat}"
                 android:hint="@string/password_repeat"
-                android:layout_marginBottom="@dimen/margin_login"
-                android:visibility="@{model.isRegister ? View.GONE : View.VISIBLE}"/>
+                android:visibility="@{model.isRegister ? View.VISIBLE : View.GONE}"
+                style="@style/EditTextLogin"/>
             <Button
                 android:id="@+id/send"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_login"
-                android:text="@{model.isRegister ? @string/login : @string/register}"/>
-            <TextView
-                android:id="@+id/is_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text='@{model.isRegister?@string/account_do : @string/account_notdo }'/>
-        </LinearLayout>
+                android:text="@{model.isRegister ? @string/register : @string/login}"
 
+                style="@style/ButtonLogin"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/is_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:text='@{model.isRegister?@string/account_do : @string/account_notdo }'/>
     </FrameLayout>
 </layout>

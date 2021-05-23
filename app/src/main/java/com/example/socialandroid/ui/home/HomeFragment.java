@@ -1,5 +1,7 @@
 package com.example.socialandroid.ui.home;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -11,16 +13,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.socialandroid.App;
 import com.example.socialandroid.R;
 import com.example.socialandroid.api.model.Post;
+import com.example.socialandroid.ui.PostsAdapter;
 
 import java.util.List;
 
@@ -39,9 +40,12 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
         recyclerView = view.findViewById(R.id.recycler);
-        adapter = new PostsAdapter();
+        adapter = new PostsAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Новости");
         return view;
     }
 
@@ -52,11 +56,12 @@ public class HomeFragment extends Fragment {
 
 
         mViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(HomeViewModel.class);
-        if (App.posts == null) {
+        //if (App.posts == null) {
             mViewModel.updatePosts();
+            /*
         } else {
             mViewModel.posts.setValue(App.posts);
-        }
+        }*/
         mViewModel.getPosts().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {

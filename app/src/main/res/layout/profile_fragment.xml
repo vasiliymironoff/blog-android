@@ -1,15 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+    <data>
 
-</RelativeLayout>
+        <variable
+            name="model"
+            type="com.example.socialandroid.ui.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.ProfileFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    app:cardCornerRadius="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image_my_profile"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="end"
+                            android:layout_margin='20dp' />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10sp"
+                            android:layout_marginTop="35dp"
+                            android:layout_toEndOf="@id/image_my_profile"
+                            android:text="@{model.username}"
+                            android:textSize="30sp" />
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/image_my_profile"
+                            android:orientation="vertical"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="20dp">
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.status}" />
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.email}" />
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.birthDay}" />
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.countPost}" />
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.sex}" />
+
+                            <TextView
+                                style="@style/InfoProfile"
+                                android:text="@{model.about}" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_post" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_baseline_add_24" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

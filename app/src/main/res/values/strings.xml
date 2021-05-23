@@ -6,7 +6,7 @@
     <string name="a"></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="aa">Hello blank fragment</string>
-    <string name="username">Имя пользователя</string>
+    <string name="username">Имя пользователя (латинские буквы и цифры)</string>
     <string name="email">Email (необязательно)</string>
     <string name="password">Пароль</string>
     <string name="password_repeat">Повторить пароль</string>
@@ -23,4 +23,5 @@
     <string name="birth_day">День рождения</string>
     <string name="sex">Пол</string>
     <string name='save'>Сохранить изменения</string>
+
 </resources>

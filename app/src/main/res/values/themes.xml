@@ -2,18 +2,53 @@
     <!-- Base application theme. -->
     <style name="Theme.SocialAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">#D6D3D3</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/gray</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/light_gray</item>
+        <item name="android:textColorPrimary">@color/blue</item>
         <!-- Customize your theme here. -->
+        <item name='colorControlNormal'>@color/blue</item>
+        <item name="android:navigationBarColor">@color/light_gray</item>
+        <item name="alertDialogButtonGroupStyle">@color/blue</item>
     </style>
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/teal_700</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="android:statusBarColor">@color/blue</item>
+
+        <item name="android:navigationBarColor">@color/white</item>
     </style>
+
+    <style name="InfoProfile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ButtonLogin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="EditTextLogin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_login</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="AlertDialog" parent='Theme.MaterialComponents.DayNight.Dialog.Alert'>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="android:textColorPrimary">@color/blue</item>
+        <item name="colorOnPrimary">@color/blue</item>
+    </style>
+
 </resources>
