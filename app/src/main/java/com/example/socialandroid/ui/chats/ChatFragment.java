@@ -27,7 +27,7 @@ import com.example.socialandroid.api.model.Profile;
 
 import java.util.List;
 
-public class ChatFragment extends Fragment implements Chatable{
+public class ChatFragment extends Fragment{
 
     private ChatViewModel mViewModel;
     private RecyclerView recyclerView;
@@ -42,7 +42,7 @@ public class ChatFragment extends Fragment implements Chatable{
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.chat_fragment, container, false);
         recyclerView = view.findViewById(R.id.chat_recycler);
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Сообщения");
         return view;
     }
@@ -53,7 +53,7 @@ public class ChatFragment extends Fragment implements Chatable{
 
 
         mViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
-        adapter = new ProfileAdapter(this);
+        adapter = new ProfileAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mViewModel.getProfiles().observe(getViewLifecycleOwner(), new Observer<List<Profile>>() {
@@ -70,16 +70,5 @@ public class ChatFragment extends Fragment implements Chatable{
         }
 
     }
-
-    @Override
-    public void toMessage(int id) {
-        Navigation.findNavController(recyclerView).navigate(R.id.action_chat_fragment_to_messageActivity);
-    }
-
-    @Override
-    public void toProfile(int id) {
-        Log.d("tag", "profile");
-    }
-
 
 }

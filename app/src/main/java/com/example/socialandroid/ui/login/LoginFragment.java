@@ -109,10 +109,11 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void accept(User user, Throwable throwable) throws Throwable {
                         if (throwable != null) {
-                            Log.d("tag", user.getId() + user.getUsername() + user.getEmail());
                             showToast("Произошла ошибка");
                         } else {
                             PreferenceService.putId(getContext(), user.getId());
+                            PreferenceService.putUserName(getContext(), user.getUsername());
+                            getToken(newUser);
                         }
                     }
                 }));
@@ -132,11 +133,10 @@ public class LoginFragment extends Fragment {
                             PreferenceService.putToken(getContext(), token.getToken());
                             if (PreferenceService.getId(getContext()) == -1) {
                                 getIdForLogin();
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+                            } else {
+                                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_customFragment);
                             }
-                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_customFragment);
-
-                            //startActivity(new Intent(getActivity(), MainActivity.class));
-
                         }
                     }
                 }));
@@ -144,7 +144,7 @@ public class LoginFragment extends Fragment {
     }
 
     void getIdForLogin() {
-        App.getService().getApi().getMe("Token " + PreferenceService.getToken(getContext()))
+        App.getService().getApi().getMe(PreferenceService.getToken(getContext()))
                 .subscribe(new BiConsumer<User, Throwable>() {
             @Override
             public void accept(User user, Throwable throwable) throws Throwable {
@@ -152,6 +152,7 @@ public class LoginFragment extends Fragment {
                     throwable.printStackTrace();
                 } else {
                     PreferenceService.putId(getContext(), user.getId());
+                    PreferenceService.putUserName(getContext(), user.getUsername());
                 }
             }
         });

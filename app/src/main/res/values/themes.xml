@@ -50,5 +50,9 @@
         <item name="android:textColorPrimary">@color/blue</item>
         <item name="colorOnPrimary">@color/blue</item>
     </style>
-
+    <style name="UsernameProfile">
+        <item name="android:textSize">@dimen/text_size_main</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_profile</item>
+        <item name="android:layout_marginStart">@dimen/margin_left_profile</item>
+    </style>
 </resources>

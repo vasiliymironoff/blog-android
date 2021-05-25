@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.message.MessageActivity"
+    tools:context=".ui.activity.MessageActivity"
     android:id="@+id/root">
 
     <include layout="@layout/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:name="com.example.socialandroid.ui.message.MessageFragment"

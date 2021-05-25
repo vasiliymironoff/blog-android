@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SocialAndroid</string>
+    <string name="app_name">Сеть</string>
     <string name="main">Главная</string>
     <string name="chats">Сообщения</string>
     <string name="profile">Профиль</string>
@@ -23,5 +23,7 @@
     <string name="birth_day">День рождения</string>
     <string name="sex">Пол</string>
     <string name='save'>Сохранить изменения</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="dark_theme">Темная тема</string>
 
 </resources>

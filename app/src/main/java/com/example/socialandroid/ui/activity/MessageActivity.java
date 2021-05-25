@@ -1,4 +1,4 @@
-package com.example.socialandroid.ui.message;
+package com.example.socialandroid.ui.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("USERNAME"));
     }
 
     @Override

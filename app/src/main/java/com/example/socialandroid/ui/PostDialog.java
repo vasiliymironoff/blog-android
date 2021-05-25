@@ -53,10 +53,12 @@ public class PostDialog extends DialogFragment {
                         Single.just(App.getService().getApi().postPost(PreferenceService.getToken(getContext()),post)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new BiConsumer<Void, Throwable>() {
+                                .subscribe(new BiConsumer<Post, Throwable>() {
                                     @Override
-                                    public void accept(Void unused, Throwable throwable) throws Throwable {
-
+                                    public void accept(Post post, Throwable throwable) throws Throwable {
+                                        if (throwable != null) {
+                                            throwable.printStackTrace();
+                                        }
                                     }
                                 }));
 

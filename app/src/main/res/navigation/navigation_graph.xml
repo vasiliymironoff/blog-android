@@ -9,7 +9,14 @@
         android:id="@+id/home_fragment"
         android:name="com.example.socialandroid.ui.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home_fragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_my_profile_fragment"
+            app:destination="@id/profile_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/chat_fragment"
         android:name="com.example.socialandroid.ui.chats.ChatFragment"
@@ -18,16 +25,39 @@
         <action
             android:id="@+id/action_chat_fragment_to_messageActivity"
             app:destination="@id/messageActivity" />
+        <action
+            android:id="@+id/action_chat_fragment_to_profile_fragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_chat_fragment_to_my_profile_fragment"
+            app:destination="@id/profile_fragment" />
     </fragment>
     <fragment
         android:id="@+id/profile_fragment"
-        android:name="com.example.socialandroid.ui.profile.ProfileFragment"
+        android:name="com.example.socialandroid.ui.profile.MyProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profile_fragment_to_settingsActivity"
+            app:destination="@id/settingsActivity" />
+    </fragment>
     <activity
         android:id="@+id/messageActivity"
-        android:name="com.example.socialandroid.ui.message.MessageActivity"
+        android:name="com.example.socialandroid.ui.activity.MessageActivity"
         android:label="activity_message"
         tools:layout="@layout/activity_message" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.socialandroid.ui.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_self"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.example.socialandroid.ui.activity.SettingsActivity"
+        android:label="SettingsActivity" />
 
 </navigation>

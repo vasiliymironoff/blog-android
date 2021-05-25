@@ -2,6 +2,7 @@ package com.example.socialandroid.service;
 
 import android.graphics.Bitmap;
 
+import android.util.Base64;
 import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.concurrent.Callable;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -21,7 +23,6 @@ public class BitmapService {
     private static BitmapService service;
     private LruCache<String, Bitmap> lruCache;
 
-
     private BitmapService() {
     }
 
@@ -33,7 +34,7 @@ public class BitmapService {
             service.lruCache = new LruCache<String, Bitmap>(maxMemory) {
                 @Override
                 protected int sizeOf(String key, Bitmap value) {
-                    return value.getByteCount() / 1024;
+                    return (value.getByteCount() / 1024) / 2;
                 }
             };
         }
@@ -78,5 +79,12 @@ public class BitmapService {
                         }
                     }
                 });
+    }
+
+    public String BitmapToBase64String(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageByte = baos.toByteArray();
+        return Base64.encodeToString(imageByte, Base64.DEFAULT);
     }
 }

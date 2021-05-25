@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
-            android:id="@+id/radio"
+            android:id="@+id/sex"
             android:layout_toEndOf="@id/person_image_edit"
             android:layout_below="@id/appbar">
             <RadioButton
@@ -36,9 +36,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/men"
                 android:textSize="18sp"
+                android:id="@+id/man"
                 android:checked="@={model.isMen}"
                 />
             <RadioButton
+                android:id="@+id/women"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/women"
@@ -46,7 +48,7 @@
                 android:checked="@={!model.isMen}"/>
         </RadioGroup>
         <EditText
-            android:id="@+id/status"
+            android:id="@+id/status_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/person_image_edit"
@@ -54,12 +56,12 @@
             android:text="@={model.status}"
             android:layout_margin="20dp"/>
         <EditText
-            android:id="@+id/about"
+            android:id="@+id/about_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/about"
             android:minHeight="100dp"
-            android:layout_below="@id/status"
+            android:layout_below="@id/status_edit"
             android:gravity="bottom"
             android:text="@={model.about}"
             android:layout_margin="20dp"/>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.view.Gravity"/>
+        <variable
+            name="message"
+            type="com.example.socialandroid.api.model.Message" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="4dp"
+        android:id="@+id/card_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_message"
+                android:layout_width="@dimen/profile_image"
+                android:layout_height="@dimen/profile_image"
+                android:src="@drawable/ic_baseline_person_24"
+                android:visibility="@{message.my ? View.GONE:View.VISIBLE}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/image_message"
+                android:text="@{message.senderUsername}"
+                style="@style/UsernameProfile"
+                android:visibility="@{message.my ? View.GONE:View.VISIBLE}">
+            </TextView>
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_message"
+                android:text="@{message.text}"
+                android:layout_toEndOf="@id/image_message"
+                android:textSize="18sp"
+                android:gravity="@{message.my ? Gravity.END : Gravity.START}"/>
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:visibility="@{message.image==null ? View.GONE : View.VISIBLE}"
+                android:scaleType="centerInside"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/text"/>
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_view"
+                android:gravity="end"
+                android:text="@{message.time}"
+                android:layout_toEndOf="@id/image_message"
+                android:textSize="@dimen/text_time"
+                android:textStyle="italic"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,7 +1,6 @@
 package com.example.socialandroid.ui.profile;
 
-import android.widget.Toast;
-
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,10 +13,8 @@ import com.example.socialandroid.api.model.ProfileDetail;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.functions.BiConsumer;
-import io.reactivex.rxjava3.internal.operators.observable.ObservableFilter;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ProfileViewModel extends ViewModel {
@@ -28,6 +25,8 @@ public class ProfileViewModel extends ViewModel {
     public ObservableField<String> countPost = new ObservableField<String>();
     public ObservableField<String> email = new ObservableField<String>();
     public ObservableField<String> username = new ObservableField<>();
+    public ObservableBoolean isMy = new ObservableBoolean();
+
     public String imageUrl;
     public MutableLiveData<List<PostForProfile>> posts = new MutableLiveData<>();
 
@@ -42,7 +41,7 @@ public class ProfileViewModel extends ViewModel {
                             throwable.printStackTrace();
                         } else {
                             status.set("Статус: " + profileDetail.getStatus());
-                            about.set("Подробная информация:" + profileDetail.getAbout());
+                            about.set("Подробная информация: " + profileDetail.getAbout());
                             if (profileDetail.getIsMen()) {
                                 sex.set("Пол: мужской");
                             } else {

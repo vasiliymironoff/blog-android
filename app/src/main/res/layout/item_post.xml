@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:cardCornerRadius="4dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="4dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,20 +19,19 @@
             <LinearLayout
                 android:id="@+id/profile_min"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/person_image"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/profile_image"
+                    android:layout_height="@dimen/profile_image"
                     android:src="@drawable/ic_baseline_person_24"/>
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/person_image"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="18sp"
+                    style="@style/UsernameProfile"
                     android:text="@{post.author.username}"
                     />
             </LinearLayout>
@@ -42,20 +41,27 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profile_min"
                 android:text="@{post.title}"
-                android:textStyle="bold"/>
+                android:textSize="@dimen/text_size_title"
+                android:gravity="end"
+                android:layout_marginEnd="20dp"/>
             <TextView
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
-                android:text="@{post.text}"/>
+                android:text="@{post.text}"
+                android:textSize="@dimen/text_size_main"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"/>
             <TextView
                 android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/content"
                 android:text="@{post.time}"
-                android:gravity="right"/>
+                android:gravity="right"
+                android:textSize="@dimen/text_time"
+                android:textStyle="italic"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -1,6 +1,8 @@
 package com.example.socialandroid.ui;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +10,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialandroid.R;
 import com.example.socialandroid.api.model.Post;
 import com.example.socialandroid.databinding.ItemPostBinding;
 import com.example.socialandroid.service.BitmapService;
+import com.example.socialandroid.service.PreferenceService;
+import com.example.socialandroid.ui.profile.MyProfileFragment;
+import com.example.socialandroid.ui.profile.ProfileFragment;
 
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
@@ -62,7 +68,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.Holder> {
         Fragment fragment;
         ItemPostBinding binding;
 
-
         public Holder(@NonNull @NotNull View itemView, Fragment fragment) {
             super(itemView);
             binding = DataBindingUtil.bind(itemView);
@@ -72,10 +77,32 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.Holder> {
 
         void bind(Post post) {
             binding.setPost(post);
-            if (post.getAuthor().getImage() != null) {
+            if (post.getAuthor().getImage() != null ) {
                 BitmapService.getInstance().loadBitmap(post.getAuthor().getImage(), circleImageView);
-
             }
+            binding.getRoot().findViewById(R.id.profile_min).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("ID", post.getAuthor().getId());
+                    //Переход в наш аккаунт
+                    if (post.getAuthor().getId() == PreferenceService.getId(binding.getRoot().getContext())){
+                        if (!(fragment.getClass() == MyProfileFragment.class)){
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_home_fragment_to_my_profile_fragment);
+                        }
+                    } else {
+                        //Переход в чужой аккаунт
+                        if (fragment.getClass() == ProfileFragment.class) {
+                            //С ProfileFragment to ProfileFragment
+                           Navigation.findNavController(binding.getRoot()).navigate(R.id.action_profileFragment_self, bundle);
+                        } else {
+                            //C HomeFragment to ProfileFragment
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_home_fragment_to_profileFragment, bundle);
+                        }
+
+                    }
+                }
+            });
         }
 
     }
