@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Сеть</string>
+    <string name="app_name">App</string>
     <string name="main">Главная</string>
     <string name="chats">Сообщения</string>
     <string name="profile">Профиль</string>
